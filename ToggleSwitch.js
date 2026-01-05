@@ -45,7 +45,7 @@ export default class ToggleSwitch extends React.Component {
           padding: 12,
           circleWidth: 18,
           circleHeight: 18,
-          translateX: 26,
+          translateX: 24,
         };
     }
   }
@@ -62,6 +62,7 @@ export default class ToggleSwitch extends React.Component {
     thumbOffStyle: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.number]),
     trackOnStyle: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.number]),
     trackOffStyle: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.number]),
+    disableShadow: PropTypes.bool,
     onToggle: PropTypes.func,
     icon: PropTypes.object,
     disabled: PropTypes.bool,
@@ -74,7 +75,7 @@ export default class ToggleSwitch extends React.Component {
         bottom: PropTypes.number,
         left: PropTypes.number,
         right: PropTypes.number
-      }), 
+      }),
       PropTypes.number
     ]),
   };
@@ -95,6 +96,7 @@ export default class ToggleSwitch extends React.Component {
     animationSpeed: 300,
     useNativeDriver: true,
     circleColor: "white",
+    disableShadow: false,
   };
 
   offsetX = new Animated.Value(0);
@@ -109,9 +111,9 @@ export default class ToggleSwitch extends React.Component {
       backgroundColor: this.props.isOn
         ? this.props.onColor
         : this.props.offColor,
-        paddingBottom :  Platform.OS == "windows" || Platform.OS == "macos" 
-        ? this.dimensions.padding + 2 
-        : this.dimensions.padding 
+        paddingBottom :  Platform.OS == "windows" || Platform.OS == "macos"
+        ? this.dimensions.padding + 2
+        : this.dimensions.padding
     },
     this.props.isOn ? this.props.trackOnStyle : this.props.trackOffStyle,
   ];
@@ -133,9 +135,9 @@ export default class ToggleSwitch extends React.Component {
         width: 0,
         height: 2,
       },
-      shadowOpacity: 0.2,
       shadowRadius: 2.5,
-      elevation: 1.5,
+      shadowOpacity: this.props.disableShadow ? 0 : (this.props.isOn ? 0.2 : 0),
+      elevation: this.props.disableShadow ? 0 : (this.props.isOn ? 1.5 : 0),
     },
     this.props.isOn ? this.props.thumbOnStyle : this.props.thumbOffStyle,
   ];

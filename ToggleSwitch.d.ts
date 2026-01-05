@@ -14,6 +14,7 @@ declare module 'toggle-switch-react-native' {
     trackOnStyle?: StyleProp<ViewStyle>;
     trackOffStyle?: StyleProp<ViewStyle>;
     onToggle?: (isOn: boolean) => any;
+    disableShadow: boolean,
     icon?: React.ReactNode;
     disabled?: boolean;
     animationSpeed?: number;
