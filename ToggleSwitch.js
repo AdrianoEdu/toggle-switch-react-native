@@ -45,7 +45,7 @@ export default class ToggleSwitch extends React.Component {
           padding: 12,
           circleWidth: 18,
           circleHeight: 18,
-          translateX: 24,
+          translateX: 27,
         };
     }
   }
