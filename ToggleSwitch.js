@@ -136,8 +136,8 @@ export default class ToggleSwitch extends React.Component {
         height: 2,
       },
       shadowRadius: 2.5,
-      shadowOpacity: this.props.disableShadow ? 0 : (this.props.isOn ? 0.2 : 0),
-      elevation: this.props.disableShadow ? 0 : (this.props.isOn ? 1.5 : 0),
+      shadowOpacity: this.props.disableShadow ? 0 : (this.props.isOn && !this.props.disableShadow ? 0.2 : 0),
+      elevation: this.props.disableShadow ? 0 : (this.props.isOn && !this.props.disableShadow ? 1.5 : 0),
     },
     this.props.isOn ? this.props.thumbOnStyle : this.props.thumbOffStyle,
   ];
